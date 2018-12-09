@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<div class="text-center" style="padding:50px 0">
+	<div class="logo">anna käyttäjätunnus ja salasana</div>
+	<!-- Main Form -->
+
+
+	<div class="login-form-1">
+		<form [formGroup]="loginForm" class="text-left" (ngSubmit)="login()" >
+			<div class="login-form-main-message"></div>
+			<div class="main-login-form">
+				<div class="login-group">
+					<div class="form-group">
+						<label for="lg_username" class="sr-only">Käyttäjätunnus</label>
+						<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="käyttäjätunnus"
+						formControlName = "username">
+					</div>
+					<div *ngIf="loginForm.controls.username.touched && !loginForm.controls.username.valid" class="alert alert-danger">
+					Käyttäjätunnus on pakollinen</div>
+					<div class="form-group">
+						<label for="lg_password" class="sr-only">Salasana</label>
+						<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="salasana"
+						formControlName = "password">
+						<div *ngIf="loginForm.controls.password.touched && !loginForm.controls.password.valid" class="alert alert-danger">
+						Salasana on pakollinen</div>
+					</div>
+					<div class="form-group login-group-checkbox">
+						<input type="checkbox" id="lg_remember" name="lg_remember">
+						<label for="lg_remember">muista minut</label>
+					</div>
+				</div>
+				<button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
+			</div>
+			<div *ngIf="invalidLoginMessage" class="alert alert-danger">
+				{{invalidLoginMessage}}
+			</div>
+			<div class="etc-login-form">
+				<p>salasana hukassa? <a href="#">klikkaa tästä</a></p>
+				<p>uusi käyttäjä? <a href="#">luo tili</a></p>
+			</div>
+		</form>
+	</div>
+	<!-- end:Main Form -->
+</div>

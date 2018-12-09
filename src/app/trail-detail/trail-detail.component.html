@@ -1,0 +1,42 @@
+<main role="main">
+  <div *ngIf="trail_details?.length" class="container">
+    <div class="page-header">
+        <h1> {{trail_details[0].name}}</h1>
+    </div>
+
+    <h2> Reitti</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <agm-map #gm [latitude]="latcenter" [longitude]="lngcenter" [zoom]="12">
+            <agm-marker *ngFor="let image of trail_images; index as i"
+                      [latitude]="image.imageLat"
+                      [longitude]="image.imageLon"
+                      (markerClick)="showImage(i)">
+            </agm-marker>
+          </agm-map>
+        </div>
+        <div class="col-sm">
+          <div *ngIf="imageSelected">
+            <img class="card-img-top" src="{{currentImage}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2> Kaikki kuvat</h2>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div  class="row">
+              <div *ngFor="let image of trail_images" class="col-md-4 col-sm-6 col-12">
+                <div  class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="{{image.imageSrc}}" alt="Kurkijärvi">
+                  <div class="card-body">
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</main>

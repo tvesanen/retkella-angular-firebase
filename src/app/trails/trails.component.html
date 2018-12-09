@@ -1,0 +1,19 @@
+
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+
+
+  <agm-map #gm [latitude]="latcenter" [longitude]="lngcenter">
+    <agm-marker *ngFor="let trail of marker_positions"
+                [iconUrl]="marker_icon"
+                [latitude]="trail.latitude"
+                [longitude]="trail.longitude"
+                (mouseOver)="onMouseOver(infoWindow,gm)">
+      <agm-info-window [disableAutoPan]="false" #infoWindow>
+
+         <a routerLink="/trail/{{trail.name}}"> {{trail.name}} </a>
+
+      </agm-info-window>
+
+    </agm-marker>
+  </agm-map>
