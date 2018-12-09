@@ -35,7 +35,7 @@ import { ImageloaderComponent } from './imageloader/imageloader.component';
     AngularFireStorageModule,
     AngularFireAuthModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDHZtjXfvGjIWInSA8xcjLmQsXRq5h8sD4'
+      apiKey: APIKEY
     }),
     AppRoutingModule,
     HttpClientModule
